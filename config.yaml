@@ -5,3 +5,4 @@ theme: "PaperMod"
 relativeURLs: false
 canonifyURLs: true
 uglyURLs: false
+googleAnalytics: ""
