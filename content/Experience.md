@@ -8,9 +8,9 @@ author: Thomas Archer-Black
 
 [< Back to Home](/)
 
-### Arizona Game and Fish Department
-
 ---
+
+### Arizona Game and Fish Department
 
 I have been fortunate enough to spend two summers with the Game and Fish Department. I hope to use 
 this space to share some things I've learned that don't fit on a [resume](/Resume) or on LinkedIn. 
