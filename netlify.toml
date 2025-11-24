@@ -1,0 +1,11 @@
+[build]
+  # The folder Hugo generates after building the site
+  publish = "public"
+
+  # The command Netlify should run to build your site
+  command = "hugo"
+
+# Optional: set the Hugo version Netlify uses
+[build.environment]
+  HUGO_VERSION = "0.125.2"  # replace with the version you want
+  HUGO_ENV = "production"
