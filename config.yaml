@@ -1,0 +1,7 @@
+﻿baseURL: "https://ThomasArcherBlack.github.io/"
+languageCode: "en-us"
+title: "Thomas Archer-Black"
+theme: "PaperMod"
+relativeURLs: false
+canonifyURLs: true
+uglyURLs: false

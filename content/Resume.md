@@ -3,7 +3,9 @@ title: Resume
 author: Thomas Archer-Black
 ---
 
-[< Back to Experience](/Experience)
+[< Back to Experience]({{< relref "Experience.md" >}})
 
-[Here is a link to a PDF of my resume](/ThomasResume.pdf)
+[Download Resume](/files/ThomasResume.pdf)
+
+
 

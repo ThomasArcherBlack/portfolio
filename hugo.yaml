@@ -1,8 +1,12 @@
-baseURL: https://example.org/
+baseURL: "https://ThomasArcherBlack.github.io/"    
 languageCode: en-us
 title: 
 copyright: © Thomas Archer-Black 2025
-theme: ["PaperMod"]
+theme: "PaperMod"
+
+relativeURLs: false
+canonifyURLs: true
+uglyURLs: false
 
 params:
   profileMode:

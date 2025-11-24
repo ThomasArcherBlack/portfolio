@@ -140,8 +140,8 @@ most of the datasets are courtesy the &lt;a href=&#34;https://github.com/rfordat
       <link>http://localhost:1313/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/resume/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://localhost:1313/Experience&#34;&gt;&amp;lt; Back to Experience&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/ThomasResume.pdf&#34;&gt;Here is a link to a PDF of my resume&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;http://localhost:1313/experience/&#34;&gt;&amp;lt; Back to Experience&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/files/ThomasResume.pdf&#34;&gt;Download Resume&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

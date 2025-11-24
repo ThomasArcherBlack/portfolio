@@ -18,7 +18,7 @@ cranes &lt;- cranes |&gt; mutate(
 In future projects I hope to continue improving my use of the mutate function as it is incredibly powerful.">
 <meta name="author" content="Thomas Archer-Black">
 <link rel="canonical" href="http://localhost:1313/projects/cranes/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -123,7 +123,7 @@ In future projects I hope to continue improving my use of the mutate function as
 
 </div>
   </header> 
-  <div class="post-content"><p><a href="/Projects/Home/">&lt; Back to Portfolio</a></p>
+  <div class="post-content"><p><a href="http://localhost:1313/Projects/Home/">&lt; Back to Portfolio</a></p>
 <p>This plot demonstrates how cranes at a specific lake in Sweden are changing the time of their migration
 year over year.</p>
 <p>While creating this plot, I referenced material from a Tidy Tuesday creator. This allowed me to
@@ -132,7 +132,7 @@ build an understanding of how to use the geom_segment function effectively.</p>
 <pre tabindex="0"><code>cranes &lt;- cranes |&gt; mutate(
   md = make_date(year = 2000, month = month(ymd), day = day(ymd)))
 </code></pre><p>In future projects I hope to continue improving my use of the mutate function as it is incredibly powerful.</p>
-<p><img alt="Crane Observations at Lake Hornborgasjön, Sweden" loading="lazy" src="/Projects/Plots/Cranes.png"></p>
+<p><img alt="Crane Observations at Lake Hornborgasjön, Sweden" loading="lazy" src="http://localhost:1313/Projects/Plots/Cranes.png"></p>
 <p>Complete script used to create the above graph:</p>
 <pre tabindex="0"><code>library(&#34;tidyverse&#34;)
 
