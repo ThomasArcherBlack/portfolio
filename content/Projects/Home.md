@@ -19,3 +19,13 @@ most of the datasets are courtesy the [Tidy Tuesday](https://github.com/rfordata
  * [Flint Michigan Water Quality](/Projects/Flint/)
 
  * [Global Tuberculosis Stats](/Projects/Tuberculosis/)
+ 
+ * [Global SPI Statistics](/Projects/SPI/)
+ 
+ ---
+ 
+ Class Work Projects:
+ 
+ * [BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics](/Projects/LE/)
+ 
+ 

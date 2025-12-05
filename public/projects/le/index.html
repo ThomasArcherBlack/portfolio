@@ -5,37 +5,73 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Portfolio | </title>
+<title>Calculating Landscape Metrics | </title>
 <meta name="keywords" content="">
-<meta name="description" content="&lt; Back to Home
-Below are page links to various small coding projects/R graphs that I have created.
-I&rsquo;ve done my best to include accreditations for resources used, however it should be made clear that
-most of the datasets are courtesy the Tidy Tuesday project.
+<meta name="description" content="&lt; Back to Portfolio
+I have learned a lot during my time in Landscape Ecology. This class was nothing like I expected in the best way possible.
+To earn extra credit, Dr. Wu provided the below assignment:
+
+In order to achieve these goals, I implemented the below code.
+library(landscapemetrics)
+library(terra)
+library(tidyverse)
 
 
+#input landscape data
+land1mat &lt;- matrix(c(
+  0,0,0,0,1,0,0,0,0,1,
+  0,0,1,0,0,0,1,1,1,0,
+  1,1,1,0,1,0,1,0,1,1,
+  0,1,1,0,0,1,1,0,1,0,
+  0,1,1,1,1,0,0,1,1,0,
+  0,1,0,0,1,0,1,0,1,0,
+  0,1,1,0,1,0,1,0,0,0,
+  1,0,1,0,1,0,0,1,0,1,
+  1,1,1,1,1,0,0,0,0,0,
+  0,0,0,0,0,0,1,1,0,1
+  
+  
+), nrow = 10, byrow = TRUE)
 
-Crane Observations at Lake Hornborgasjön, Sweden
+#format into raster
+land1&lt;- rast(land1mat)
 
+#list needed metrics
+wanted_metrics &lt;- c(
+  &#34;lsm_l_np&#34;,      
+  &#34;lsm_l_pd&#34;,        
+  &#34;lsm_l_te&#34;,       
+  &#34;lsm_l_ed&#34;,      
+  &#34;lsm_l_lpi&#34;,      
+  &#34;lsm_l_shdi&#34;,     
+  &#34;lsm_l_fractal_am&#34;,
+  &#34;lsm_l_contag&#34;,    
+  &#34;lsm_l_lsi&#34;        
+)
 
-British Literary Prize Winners
-
-
-Flint Michigan Water Quality
-
-
-Global Tuberculosis Stats
-
-
-Global SPI Statistics
-
-
-
-Class Work Projects:
-
-BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics
-">
+#calculate and format output
+metrics &lt;- calculate_lsm(land1, what = wanted_metrics)
+metrics$layer &lt;- NULL
+metrics$level &lt;- NULL
+metrics$class &lt;- NULL
+metrics$id &lt;- NULL
+metrics$metric &lt;- c(&#34;Contagion&#34;,
+                    &#34;Edge Density&#34;,
+                    &#34;Largest Patch Index&#34;,
+                    &#34;Landscape Shape Index&#34;,
+                    &#34;Number of Patches&#34;,
+                    &#34;Patch Density&#34;,
+                    &#34;Shannon Diversity Index&#34;,
+                    &#34;Total Edge&#34;
+)
+#print metrics and the plot
+metrics |&gt;
+  mutate(value = format(value, scientific = FALSE)) |&gt;
+  print()
+plot(land1)
+This code generated:">
 <meta name="author" content="Thomas Archer-Black">
-<link rel="canonical" href="http://localhost:1313/projects/home/">
+<link rel="canonical" href="http://localhost:1313/projects/le/">
 <link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -44,7 +80,7 @@ BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/projects/home/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/projects/le/">
 <noscript>
     <style>
         #theme-toggle,
@@ -135,39 +171,102 @@ BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Portfolio
+      Calculating Landscape Metrics
     </h1>
-    <div class="post-meta"><span>Thomas Archer-Black</span>
+    <div class="post-meta"><span title='2025-12-04 00:00:00 +0000 UTC'>December 4, 2025</span>&nbsp;·&nbsp;<span>Thomas Archer-Black</span>
 
 </div>
   </header> 
-  <div class="post-content"><p><a href="http://localhost:1313/">&lt; Back to Home</a></p>
-<p>Below are page links to various small coding projects/R graphs that I have created.
-I&rsquo;ve done my best to include accreditations for resources used, however it should be made clear that
-most of the datasets are courtesy the <a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday</a> project.</p>
-<hr>
-<ul>
-<li>
-<p><a href="http://localhost:1313/Projects/Cranes/">Crane Observations at Lake Hornborgasjön, Sweden</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/Literature/">British Literary Prize Winners</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/Flint/">Flint Michigan Water Quality</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/Tuberculosis/">Global Tuberculosis Stats</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/SPI/">Global SPI Statistics</a></p>
-</li>
-</ul>
-<hr>
-<p>Class Work Projects:</p>
-<ul>
-<li><a href="http://localhost:1313/Projects/LE/">BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics</a></li>
-</ul>
+  <div class="post-content"><p><a href="http://localhost:1313/Projects/Home/">&lt; Back to Portfolio</a></p>
+<p>I have learned a lot during my time in Landscape Ecology. This class was nothing like I expected in the best way possible.
+To earn extra credit, Dr. Wu provided the below assignment:</p>
+<p><img alt="TB Stats" loading="lazy" src="http://localhost:1313/Projects/Plots/ec.png"></p>
+<p>In order to achieve these goals, I implemented the below code.</p>
+<pre tabindex="0"><code>library(landscapemetrics)
+library(terra)
+library(tidyverse)
+
+
+#input landscape data
+land1mat &lt;- matrix(c(
+  0,0,0,0,1,0,0,0,0,1,
+  0,0,1,0,0,0,1,1,1,0,
+  1,1,1,0,1,0,1,0,1,1,
+  0,1,1,0,0,1,1,0,1,0,
+  0,1,1,1,1,0,0,1,1,0,
+  0,1,0,0,1,0,1,0,1,0,
+  0,1,1,0,1,0,1,0,0,0,
+  1,0,1,0,1,0,0,1,0,1,
+  1,1,1,1,1,0,0,0,0,0,
+  0,0,0,0,0,0,1,1,0,1
+  
+  
+), nrow = 10, byrow = TRUE)
+
+#format into raster
+land1&lt;- rast(land1mat)
+
+#list needed metrics
+wanted_metrics &lt;- c(
+  &#34;lsm_l_np&#34;,      
+  &#34;lsm_l_pd&#34;,        
+  &#34;lsm_l_te&#34;,       
+  &#34;lsm_l_ed&#34;,      
+  &#34;lsm_l_lpi&#34;,      
+  &#34;lsm_l_shdi&#34;,     
+  &#34;lsm_l_fractal_am&#34;,
+  &#34;lsm_l_contag&#34;,    
+  &#34;lsm_l_lsi&#34;        
+)
+
+#calculate and format output
+metrics &lt;- calculate_lsm(land1, what = wanted_metrics)
+metrics$layer &lt;- NULL
+metrics$level &lt;- NULL
+metrics$class &lt;- NULL
+metrics$id &lt;- NULL
+metrics$metric &lt;- c(&#34;Contagion&#34;,
+                    &#34;Edge Density&#34;,
+                    &#34;Largest Patch Index&#34;,
+                    &#34;Landscape Shape Index&#34;,
+                    &#34;Number of Patches&#34;,
+                    &#34;Patch Density&#34;,
+                    &#34;Shannon Diversity Index&#34;,
+                    &#34;Total Edge&#34;
+)
+#print metrics and the plot
+metrics |&gt;
+  mutate(value = format(value, scientific = FALSE)) |&gt;
+  print()
+plot(land1)
+</code></pre><p>This code generated:</p>
+<p><img alt="LE1" loading="lazy" src="http://localhost:1313/Projects/Plots/LE1.png"></p>
+<pre tabindex="0"><code>1 Contagion               &#34;    0.3467216&#34;
+2 Edge Density            &#34; 9200.0000000&#34;
+3 Largest Patch Index     &#34;   46.0000000&#34;
+4 Landscape Shape Index   &#34;    3.3000000&#34;
+5 Number of Patches       &#34;    8.0000000&#34;
+6 Patch Density           &#34;80000.0000000&#34;
+7 Shannon Diversity Index &#34;    0.6881388&#34;
+8 Total Edge              &#34;   92.0000000&#34;
+</code></pre><p>The second landscape also needed to be aggregated.
+This was done easily through adding</p>
+<pre tabindex="0"><code>land2ag &lt;- aggregate(land2, fact = 2)
+</code></pre><p>into the already existing code.
+This lead to the results looking like:
+<img alt="LE1" loading="lazy" src="http://localhost:1313/Projects/Plots/LE2.png">
+<img alt="LE1" loading="lazy" src="http://localhost:1313/Projects/Plots/LE2ag.png"></p>
+<pre tabindex="0"><code>1 Contagion               &#34;   21.543837&#34;
+2 Edge Density            &#34; 2187.500000&#34;
+3 Largest Patch Index     &#34;   25.000000&#34;
+4 Landscape Shape Index   &#34;    1.875000&#34;
+5 Number of Patches       &#34;    7.000000&#34;
+6 Patch Density           &#34;27343.750000&#34;
+7 Shannon Diversity Index &#34;    1.036106&#34;
+8 Total Edge              &#34;   56.000000&#34;
+</code></pre><p>This worksheet was very interesting and challegned me to use skills I would otherwise not practice on my own.
+I believe that the skills learned here can be very valuable in any setting where
+the composition and configuration of some- thing need to be compared.</p>
 
 
   </div>

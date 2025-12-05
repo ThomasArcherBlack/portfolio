@@ -7,8 +7,37 @@
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <copyright>Thomas Archer-Black 2025</copyright>
-    <lastBuildDate>Tue, 04 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculating Landscape Metrics</title>
+      <link>http://localhost:1313/projects/le/</link>
+      <pubDate>Thu, 04 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/le/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://localhost:1313/Projects/Home/&#34;&gt;&amp;lt; Back to Portfolio&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I have learned a lot during my time in Landscape Ecology. This class was nothing like I expected in the best way possible.
+To earn extra credit, Dr. Wu provided the below assignment:&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;TB Stats&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/Projects/Plots/ec.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This code generated:&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;LE1&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/Projects/Plots/LE1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;sdf&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Global SPI Score Changes</title>
+      <link>http://localhost:1313/projects/spi/</link>
+      <pubDate>Thu, 04 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/spi/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://localhost:1313/Projects/Home/&#34;&gt;&amp;lt; Back to Portfolio&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The World Bank Group measures Statistical Performance Indicators (SPI) by testing how well countries manage data.
+Interestingly, both low and high income countries are improving their data usage at similar rates.
+This plot utilizes some math to calculate the YoY change average for both low and high income blocks.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;avg_delta &amp;lt;- spi %&amp;gt;%
+  group_by(country) %&amp;gt;%
+  arrange(year) %&amp;gt;%
+  summarize(delta = mean(diff(overall_score) / diff(year), na.rm = TRUE)) %&amp;gt;%
+  summarize(mean_delta = mean(delta, na.rm = TRUE))
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Also new here is the use of library(patchwork) to combine two plots together with p1 + p2&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Flint Michigan Water Quality</title>
       <link>http://localhost:1313/projects/flint/</link>
@@ -102,6 +131,14 @@ most of the datasets are courtesy the &lt;a href=&#34;https://github.com/rfordat
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;http://localhost:1313/Projects/Tuberculosis/&#34;&gt;Global Tuberculosis Stats&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/Projects/SPI/&#34;&gt;Global SPI Statistics&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Class Work Projects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://localhost:1313/Projects/LE/&#34;&gt;BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
   </channel>

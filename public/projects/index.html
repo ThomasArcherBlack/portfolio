@@ -113,6 +113,37 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Calculating Landscape Metrics
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>&lt; Back to Portfolio
+I have learned a lot during my time in Landscape Ecology. This class was nothing like I expected in the best way possible. To earn extra credit, Dr. Wu provided the below assignment:
+This code generated:
+sdf
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-04 00:00:00 +0000 UTC'>December 4, 2025</span>&nbsp;·&nbsp;<span>Thomas Archer-Black</span></footer>
+  <a class="entry-link" aria-label="post link to Calculating Landscape Metrics" href="http://localhost:1313/projects/le/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Global SPI Score Changes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>&lt; Back to Portfolio
+The World Bank Group measures Statistical Performance Indicators (SPI) by testing how well countries manage data. Interestingly, both low and high income countries are improving their data usage at similar rates. This plot utilizes some math to calculate the YoY change average for both low and high income blocks.
+avg_delta &lt;- spi %&gt;%group_by(country) %&gt;%arrange(year) %&gt;%summarize(delta = mean(diff(overall_score) / diff(year), na.rm = TRUE)) %&gt;%summarize(mean_delta = mean(delta, na.rm = TRUE)) Also new here is the use of library(patchwork) to combine two plots together with p1 &#43; p2
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-04 00:00:00 +0000 UTC'>December 4, 2025</span>&nbsp;·&nbsp;<span>Thomas Archer-Black</span></footer>
+  <a class="entry-link" aria-label="post link to Global SPI Score Changes" href="http://localhost:1313/projects/spi/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Flint Michigan Water Quality
     </h2>
   </header>
@@ -198,7 +229,9 @@ Crane Observations at Lake Hornborgasjön, Sweden
 British Literary Prize Winners
 Flint Michigan Water Quality
 Global Tuberculosis Stats
-</p>
+Global SPI Statistics
+Class Work Projects:
+BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics </p>
   </div>
   <footer class="entry-footer"><span>Thomas Archer-Black</span></footer>
   <a class="entry-link" aria-label="post link to Portfolio" href="http://localhost:1313/projects/home/"></a>

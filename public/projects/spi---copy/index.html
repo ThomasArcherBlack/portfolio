@@ -5,37 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Portfolio | </title>
+<title>Global SPI Score Changes | </title>
 <meta name="keywords" content="">
-<meta name="description" content="&lt; Back to Home
-Below are page links to various small coding projects/R graphs that I have created.
-I&rsquo;ve done my best to include accreditations for resources used, however it should be made clear that
-most of the datasets are courtesy the Tidy Tuesday project.
-
-
-
-Crane Observations at Lake Hornborgasjön, Sweden
-
-
-British Literary Prize Winners
-
-
-Flint Michigan Water Quality
-
-
-Global Tuberculosis Stats
-
-
-Global SPI Statistics
-
-
-
-Class Work Projects:
-
-BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics
-">
+<meta name="description" content="&lt; Back to Portfolio
+The World Bank Group measures Statistical Performance Indicators (SPI) by testing how well countries manage data.
+Interestingly, both low and high income countries are improving their data usage at similar rates.
+This plot utilizes some math to calculate the YoY change average for both low and high income blocks.
+avg_delta &lt;- spi %&gt;%
+  group_by(country) %&gt;%
+  arrange(year) %&gt;%
+  summarize(delta = mean(diff(overall_score) / diff(year), na.rm = TRUE)) %&gt;%
+  summarize(mean_delta = mean(delta, na.rm = TRUE))
+Also new here is the use of library(patchwork) to combine two plots together with p1 &#43; p2">
 <meta name="author" content="Thomas Archer-Black">
-<link rel="canonical" href="http://localhost:1313/projects/home/">
+<link rel="canonical" href="http://localhost:1313/projects/spi---copy/">
 <link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -44,7 +27,7 @@ BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/projects/home/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/projects/spi---copy/">
 <noscript>
     <style>
         #theme-toggle,
@@ -135,40 +118,98 @@ BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Portfolio
+      Global SPI Score Changes
     </h1>
-    <div class="post-meta"><span>Thomas Archer-Black</span>
+    <div class="post-meta"><span title='2025-12-04 00:00:00 +0000 UTC'>December 4, 2025</span>&nbsp;·&nbsp;<span>Thomas Archer-Black</span>
 
 </div>
   </header> 
-  <div class="post-content"><p><a href="http://localhost:1313/">&lt; Back to Home</a></p>
-<p>Below are page links to various small coding projects/R graphs that I have created.
-I&rsquo;ve done my best to include accreditations for resources used, however it should be made clear that
-most of the datasets are courtesy the <a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday</a> project.</p>
-<hr>
-<ul>
-<li>
-<p><a href="http://localhost:1313/Projects/Cranes/">Crane Observations at Lake Hornborgasjön, Sweden</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/Literature/">British Literary Prize Winners</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/Flint/">Flint Michigan Water Quality</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/Tuberculosis/">Global Tuberculosis Stats</a></p>
-</li>
-<li>
-<p><a href="http://localhost:1313/Projects/SPI/">Global SPI Statistics</a></p>
-</li>
-</ul>
-<hr>
-<p>Class Work Projects:</p>
-<ul>
-<li><a href="http://localhost:1313/Projects/LE/">BIO 421, Lanscape Ecology Extra Credit | Calculating Landscape Metrics</a></li>
-</ul>
+  <div class="post-content"><p><a href="http://localhost:1313/Projects/Home/">&lt; Back to Portfolio</a></p>
+<p>The World Bank Group measures Statistical Performance Indicators (SPI) by testing how well countries manage data.
+Interestingly, both low and high income countries are improving their data usage at similar rates.
+This plot utilizes some math to calculate the YoY change average for both low and high income blocks.</p>
+<pre tabindex="0"><code>avg_delta &lt;- spi %&gt;%
+  group_by(country) %&gt;%
+  arrange(year) %&gt;%
+  summarize(delta = mean(diff(overall_score) / diff(year), na.rm = TRUE)) %&gt;%
+  summarize(mean_delta = mean(delta, na.rm = TRUE))
+</code></pre><p>Also new here is the use of library(patchwork) to combine two plots together with p1 + p2</p>
+<p><img alt="SPI Stats" loading="lazy" src="http://localhost:1313/Projects/Plots/SPI.png">
+Below is the full code for this project:</p>
+<pre tabindex="0"><code>library(tidyverse)
+library(ggrepel)
+library(patchwork)
+library(glue)
 
+# Gather data
+spi &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-11-25/spi_indicators.csv&#39;)
+spi2 &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-11-25/spi_indicators.csv&#39;)
+
+#Filter both plots by income, and mark out lines of interest
+spi &lt;- filter(spi, income == &#34;Low income&#34;, year &lt;= 2022) 
+color &lt;- spi %&gt;%
+  filter(country %in% c(&#34;Syrian Arab Republic&#34;, &#34;Somalia&#34;, &#34;Uganda&#34;))
+labels &lt;- filter(color, year == max(year))
+
+spi2 &lt;- filter(spi2, income == &#34;High income&#34;, year &lt;= 2022) 
+color2 &lt;- spi2 %&gt;%
+  filter(country %in% c(&#34;St. Kitts and Nevis&#34;, &#34;Poland&#34;, &#34;Bahamas, The&#34;))
+labels2 &lt;- filter(color2, year == max(year))
+
+#Calculate average yearly change for both plots
+avg_delta &lt;- spi %&gt;%
+  group_by(country) %&gt;%
+  arrange(year) %&gt;%
+  summarize(delta = mean(diff(overall_score) / diff(year), na.rm = TRUE)) %&gt;%
+  summarize(mean_delta = mean(delta, na.rm = TRUE))
+
+avg_delta2 &lt;- spi2 %&gt;%
+  group_by(country) %&gt;%
+  arrange(year) %&gt;%
+  summarize(delta = mean(diff(overall_score) / diff(year), na.rm = TRUE)) %&gt;%
+  summarize(mean_delta = mean(delta, na.rm = TRUE))
+
+#Create subtitle
+subtitle_text &lt;- glue(&#34;Low Income Δ: {round(avg_delta, 2)} | High Income Δ: {round(avg_delta2, 2)}&#34;)
+
+#Plot low income countries
+p1 &lt;- ggplot(data = spi, aes(x = year, y = overall_score, group = country)) +
+  geom_line(color = &#34;grey80&#34;, alpha = 0.8, linewidth = 0.8) +
+  geom_line(data = color, color = &#34;orange&#34;, linewidth = 1.1) +
+  scale_x_continuous(limits = c(2016, 2022)) +
+  theme_minimal() +
+  theme(plot.title = element_text(size = 11), plot.subtitle = element_text(size = 8)) +
+  geom_label_repel(data = labels,
+    aes(label = country, y = overall_score, x= year),
+    direction = &#34;y&#34;,
+    nudge_y = 1,
+    size = 2) +
+  labs(
+    title = &#34;Countries in Low, High Income Brackets Display Similar YoY Change&#34;,
+    subtitle = subtitle_text,
+    x = &#34;Low Income&#34;,
+    y = &#34;Overall SPI Score&#34;
+  )
+
+#Plot high income countries
+p2 &lt;- ggplot(data = spi2, aes(x = year, y = overall_score, group = country)) +
+  geom_line(color = &#34;grey80&#34;, alpha = 0.8, linewidth = 0.8) +
+  geom_line(data = color2, color = &#34;orange&#34;, linewidth = 1.1) +
+  scale_x_continuous(limits = c(2016, 2022)) +
+  theme_minimal() +
+  geom_label_repel(data = labels2,
+                   aes(label = country, y = overall_score, x= year),
+                   direction = &#34;y&#34;,
+                   nudge_y = -1,
+                   size = 2) +
+  labs(
+    x = &#34;High Income&#34;,
+    y = &#34;Overall SPI Score&#34;
+  )
+
+#Combine plots
+p1 + p2
+</code></pre>
 
   </div>
 
